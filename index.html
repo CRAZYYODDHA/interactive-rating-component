@@ -1,49 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="style.css">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive rating component</title>
+    <title>Frontend Mentor | Interactive rating component</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
+    <!-- Rating state start -->
+    <div class="container">
+      <div class="front-div">
+        <img class="icon-star" src="./images/icon-star.svg" alt="icon-star.svg">
+        <h3>
+          How did we do? 
+        </h3>
+        <p>
+          Please let us know how we did with your support request.
+          All feedback is appreciated to help us improve our offering!
+        </p>
+        <div class="rating-div">
+          <form class="rating-form">
+            <input type="radio" id="rating-input-1" name="rating" value="1">
+            <label for="rating-input-1">1</label>
+            <input type="radio" id="rating-input-2" name="rating" value="2">
+            <label for="rating-input-2">2</label>
+            <input type="radio" id="rating-input-3" name="rating" value="3">
+            <label for="rating-input-3">3</label>
+            <input type="radio" id="rating-input-4" name="rating" value="4">
+            <label for="rating-input-4">4</label>
+            <input type="radio" id="rating-input-5" name="rating" value="5">
+            <label for="rating-input-5">5</label>
+          </form>
+        </div>
+        <button class="submit">
+          Submit
+        </button>
+      </div>
+      <!-- Rating state end -->
+      
+      <!-- Thank you state start -->
+      <div class="back-div back-style">
+        <img class="tySvg" src="./images/illustration-thank-you.svg" alt="illustration-thank-you.svg">
+        <p id="ratingText">
+          You selected out of 5 
+        </p>
+        <h1>
+          Thank you!
+        </h1>
+        <p>
+          We appreciate you taking the time to give a rating.
+          If you ever need more support, don't hesitate to get in touch!
+        </p>
+      </div>
+    </div>
+    <!-- Thank you state end -->
+    <script>
+      const ratingDiv = document.querySelector('.rating-div');
+      const frontDiv = document.querySelector('.front-div');
+      const backDiv = document.querySelector('.back-div');
+      const submitButton = document.querySelector('.submit');
+      const buttons = document.querySelectorAll('.rating-btn');
+      let rating = 0;
 
-  <!-- Rating state start -->
-
-  How did we do?
-
-  Please let us know how we did with your support request. All feedback is appreciated 
-  to help us improve our offering!
-
-  1 2 3 4 5
-
-  Submit
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  You selected <!-- Add rating here --> out of 5
-
-  Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!
-
-  <!-- Thank you state end -->
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        submitButton.addEventListener('click', () => {
+          const checkedInput = document.querySelector('input[name="rating"]:checked');
+          if(checkedInput) {
+            frontDiv.style.display = 'none';
+            backDiv.classList.toggle('back-div');
+            rating = checkedInput.value;
+            document.getElementById('ratingText').innerText = `You selected ${rating} out of 5`;
+          } else [
+            alert('Please select a rating')
+          ]
+        });
+    </script>
+  </body>
 </html>
