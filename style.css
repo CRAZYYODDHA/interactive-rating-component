@@ -114,3 +114,19 @@ button:hover{
 label:hover{
     background-color: hsl(25, 97%, 53%);
 }
+/* add media query for 375px */
+@media screen and (max-width: 400px){
+    .container{
+        width: 300px;
+    }
+    .back-style img{
+        width: 150px;
+        height: 100px;
+    }
+    .rating-form label{
+        padding: 10px;
+    }
+    .rating-form input[type="radio"]:checked + label{
+        background-color:  hsl(216, 12%, 54%);
+    }
+}
